@@ -47,6 +47,20 @@ public class ListaDuplamenteLigada {
   //desafio: implementar esse método minimizando o número de iterações
   //considere que é possível iterar do início para o fim e do fim para o início
   public int acessar(int indice){
-
+    if(indice < 0 || indice >= quantidade)
+      throw new IndexOutOfBoundsException();
+    No atual;
+    if(indice < quantidade / 2){
+      atual = primeiro;
+      for(int i = 0; i < indice; i++)
+        atual = atual.proximo;
+    }
+    else{
+      atual = ultimo;
+      for(int i = quantidade - 1; i > indice; i--){
+        atual = atual.anterior;
+      }
+    }
+    return atual.valor;
   }
 }
